@@ -1,1 +1,1 @@
-# ohtu-s2020
+# ohtu-s2020-tehtavat
