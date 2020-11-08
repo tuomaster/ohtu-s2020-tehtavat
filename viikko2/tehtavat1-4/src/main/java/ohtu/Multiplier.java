@@ -6,7 +6,7 @@ public class Multiplier {
         this.value = value;
     }
 
-    public int mulipliedBy(int other) {
+    public int multipliedBy(int other) {
         return value * other;
     }
 }
