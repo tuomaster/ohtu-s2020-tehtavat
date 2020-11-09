@@ -1,11 +1,15 @@
 package ohtu.verkkokauppa;
 
 import ohtu.rajapinnat.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Pankki implements Rahasailo {
 
     private Rekisteri kirjanpito;
-
+    
+    @Autowired
     public Pankki(Rekisteri kirjanpito) {
         this.kirjanpito = kirjanpito;
     }
