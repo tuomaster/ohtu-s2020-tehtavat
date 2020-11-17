@@ -68,9 +68,10 @@ public class Stepdefs {
 
     @Given("command new user is selected")
     public void commandNewUserIsSelected() {
-        driver.get(baseUrl);
-        WebElement element = driver.findElement(By.linkText("register new user"));
-        element.click();
+        selectCommandNewUser();
+        //        driver.get(baseUrl);
+        //        WebElement element = driver.findElement(By.linkText("register new user"));
+        //        element.click();
     }
 
     @When("a valid username {string} and password {string} and matching password confirmation are entered")
@@ -106,10 +107,28 @@ public class Stepdefs {
 
     @Given("user with username {string} with password {string} is successfully created")
     public void userWithUsernameWithPasswordIsSuccessfullyCreated(String username, String password) {
+        selectCommandNewUser();
         createNewUserWith(username, password, password);
-        //pageHasContent("Welcome to Ohtu Application!");
+        pageHasContent("Welcome to Ohtu Application!");
         //logOutAfterNewUserIsCreated();
 
+    }
+
+    @Given("user with username {string} and password {string} is tried to be created")
+    public void userWithUsernameAndPasswordIsTriedToBeCreated(String username, String password) {
+        selectCommandNewUser();
+        createNewUserWith(username, password, password);
+    }
+
+    @When("username {string} and password {string} related to unsuccessfully created account are given")
+    public void usernameAndPasswordRelatedToUnsuccessfullyCreatedAccountAreGiven(String username, String password) {
+        logInWith(username, password);
+    }
+
+    @Then("user with unsuccessfully created account is not logged in and error message is given")
+    public void userWithUnsuccessfullyCreatedAccountIsNotLoggedInAndErrorMessageIsGiven() {
+        pageHasContent("invalid username or password");
+        pageHasContent("Give your credentials to login");
     }
 
     @After
@@ -155,6 +174,12 @@ public class Stepdefs {
         WebElement element = driver.findElement(By.linkText("continue to application mainpage"));
         element.click();
         logOut();
+    }
+
+    private void selectCommandNewUser() {
+        driver.get(baseUrl);
+        WebElement element = driver.findElement(By.linkText("register new user"));
+        element.click();
     }
 
 }
