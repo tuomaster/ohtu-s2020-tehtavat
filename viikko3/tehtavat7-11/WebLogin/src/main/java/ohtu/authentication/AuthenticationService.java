@@ -38,6 +38,10 @@ public class AuthenticationService {
             status.addError("password should have at least 8 characters");
         }
         
+//        if(password.chars().allMatch(Character::isLetter)) {
+//            status.addError("password should have at least 1 number");
+//        }
+        
         if(!passwordConfirmation.equals(password)) {
             status.addError("password and password confirmation do not match");
         }
