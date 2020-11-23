@@ -104,4 +104,65 @@ public class KauppaTest {
 
         verify(pankki).tilisiirto(eq("pekka"), anyInt(), eq("12345"), eq("33333-44455"), eq(5));
     }
+    
+    @Test
+    public void kaupanMetodiAloitaAsiointiNollaaEdellisenOstoksenTiedot() {
+        when(varasto.saldo(1)).thenReturn(10);
+        when(varasto.haeTuote(1)).thenReturn(new Tuote(1, "maito", 5));
+        
+        kauppa.aloitaAsiointi();
+        kauppa.lisaaKoriin(1);
+        kauppa.lisaaKoriin(1);
+        kauppa.tilimaksu("pekka", "12345");
+        
+        kauppa.aloitaAsiointi();
+        kauppa.lisaaKoriin(1);
+        kauppa.tilimaksu("pekka", "12345");
+        
+        verify(pankki).tilisiirto(anyString(), anyInt(), anyString(), anyString(), eq(5));
+    }
+    
+    @Test
+    public void kauppaPyytaaJokaiselleMaksutapahtumalleUudenViitenumeron() {
+        when(viite.uusi())
+                .thenReturn(1)
+                .thenReturn(2)
+                .thenReturn(3);
+        
+        when(varasto.saldo(1)).thenReturn(10);
+        when(varasto.haeTuote(1)).thenReturn(new Tuote(1, "maito", 5));
+        
+        kauppa.aloitaAsiointi();
+        kauppa.lisaaKoriin(1);
+        kauppa.tilimaksu("pekka", "12345");
+        
+        verify(pankki).tilisiirto(anyString(), eq(1), anyString(), anyString(), anyInt());
+        
+        kauppa.aloitaAsiointi();
+        kauppa.lisaaKoriin(1);
+        kauppa.tilimaksu("pekka", "12345");
+        
+        verify(pankki).tilisiirto(anyString(), eq(2), anyString(), anyString(), anyInt());
+        
+        kauppa.aloitaAsiointi();
+        kauppa.lisaaKoriin(1);
+        kauppa.tilimaksu("pekka", "12345");
+        
+        verify(pankki).tilisiirto(anyString(), eq(3), anyString(), anyString(), anyInt());
+        
+    }
+    
+    @Test
+    public void tuotteenPoistaminenOstoskoristaVaikuttaaOstoksenLoppusummaan() {
+        when(varasto.saldo(1)).thenReturn(10);
+        when(varasto.haeTuote(1)).thenReturn(new Tuote(1, "maito", 5));
+        
+        kauppa.aloitaAsiointi();
+        kauppa.lisaaKoriin(1);
+        kauppa.lisaaKoriin(1);
+        kauppa.poistaKorista(1);
+        kauppa.tilimaksu("pekka", "12345");
+        
+        verify(pankki).tilisiirto(anyString(), anyInt(), anyString(), anyString(), eq(5));
+    }
 }
