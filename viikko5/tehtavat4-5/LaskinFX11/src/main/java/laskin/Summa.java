@@ -11,15 +11,18 @@ public class Summa extends Komento {
 
     @Override
     public void suorita() {
-        edellinenTuos = lueTuloskentta();
-        sovellus.plus(lueSyote());
+        syote = lueSyote();
+        sovellus.plus(syote);
         paivitaKentat();
         paivitaNapit();
     }
-
+    
     @Override
     public void peru() {
-
+        sovellus.miinus(syote);
+        paivitaKentat();
+        paivitaNapit();
+        deaktivoiUndoNappi();
     }
 
 }

@@ -13,15 +13,18 @@ public class Erotus extends Komento {
 
     @Override
     public void suorita() {
-        edellinenTuos = lueTuloskentta();
-        sovellus.miinus(lueSyote());
+        syote = lueSyote();
+        sovellus.miinus(syote);
         paivitaKentat();
         paivitaNapit();
     }
 
     @Override
     public void peru() {
-
+        sovellus.plus(syote);
+        paivitaKentat();
+        paivitaNapit();
+        deaktivoiUndoNappi();
     }
 
 }

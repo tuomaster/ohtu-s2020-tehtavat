@@ -12,7 +12,8 @@ public abstract class Komento {
     protected Button nollaa;
     protected Button undo;
     protected Sovelluslogiikka sovellus;
-    protected int edellinenTuos;
+    protected int syote;
+    protected int edellinenTulos;
 
     public Komento(TextField tuloskentta, TextField syotekentta, Button plus, Button miinus, Button nollaa, Button undo, Sovelluslogiikka sovellus) {
         this.tuloskentta = tuloskentta;
@@ -31,13 +32,13 @@ public abstract class Komento {
     protected int lueSyote() {
         return lueKentanArvo(syotekentta);
     }
-    
+
     protected int lueTuloskentta() {
         return lueKentanArvo(tuloskentta);
     }
-    
+
     protected int lueKentanArvo(TextField kentta) {
-                int arvo = 0;
+        int arvo = 0;
 
         try {
             arvo = Integer.parseInt(kentta.getText());
@@ -47,7 +48,6 @@ public abstract class Komento {
 
         return arvo;
     }
-    
 
     protected void paivitaKentat() {
         int laskunTulos = sovellus.tulos();
@@ -65,5 +65,9 @@ public abstract class Komento {
             nollaa.disableProperty().set(false);
         }
         undo.disableProperty().set(false);
+    }
+
+    protected void deaktivoiUndoNappi() {
+        undo.disableProperty().set(true);
     }
 }
