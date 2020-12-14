@@ -1,0 +1,9 @@
+## Referaatti Tero Huomon kandidaattityöstä "Ohjelmistoarkkitehtuurin sisällyttäminen ketteriin ohjelmistotuotantomenetelmiin"
+
+Tero Huomo käsittelee kandidaattityössään *Ohjelmistoarkkitehtuurin sisällyttäminen ketteriin ohjelmistotuotantomenetelmiin* ohjelmistoarkkitehtuurin suunnitteluun ja toteuttamiseen liittyviä haasteita ketterissä menetelmissä sekä viittä eri käytäntöä, joilla ketterien menetelmien kehitystapoja on kentällä muokattu huomioimaan paremmin arkkitehtuurin haasteet.
+
+Huomo esittää, että perinteisessä vesiputousmallissa suunnittelulle ja määrittelylle varattiin kuukausia ennen ohjelmoinnin aloittamista, joka mahdollisti arkkitehtuurin suunnittelun. Ketterät menetelmät taas eivät tunne raskasta etukäteen tapahtuvaa suunniteluperosessia, joten ohjelmisto ja samalla arkkitehtuuri muodostuvat näin ollen inkrementaalisesti sprinttien aikana. Kirjoittaja jatkaa, että ketterä ohjelmistokehitys antaa liian vähän neuvoja arkkitehtuurin suunnittelulle ja toteutukselle eikä siinä ole luonnollista tilaa ohjelmistoarkkitehtuurille.
+
+Huomon mukaan ketteriä menetelmiä käyttävät yhtiöt ovat pyrkineet ratkaisemaan näitä ongelmia sopeuttamalla prosessejaan erilaisilla käytännöillä, joiden avulla pyritään huomioimaan paremmin ohjelmistoarkkitehtuurin haasteet. Huomo esittelee viisi eri käytäntöä, jotka tarjoavat erilaisia tapoja määrittää arkkitehtuuri. Käytännöt ovat *Sprint 0, arkkitehtuuri erillisenä prosessina, suunnittelupiikit, arkkitehtuurijaksot sekä arkkitehtuuritarinat*.
+
+Huomon mukaan ei ole olemassa yhtä ohjetta siihen, mikä käytänteistä on paras tai hyödyllisin. Tieteellistä tutkimusta eri käytäntöjen paremmuudesta tai vaikutuksista ketterään ohjelmistokehitykseen ei juuri ole. Usein käytännöt ovat jonkin verran ristiriidassa ketterän ohjelmistokehityksen periaatteiden kanssa. Huomon linjaa, että käytänteitä käyttävät ohjelmistoyritykset ovat kuitenkin olleet pääasiallisesti tyytyväisiä valintoihinsa.
